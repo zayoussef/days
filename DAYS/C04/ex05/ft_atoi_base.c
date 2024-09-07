@@ -1,45 +1,39 @@
 #include <stdio.h>
 
-int ft_atoi_base(char *str, char *base)
+char to_lower(char c)
 {
-    int n = 0;
-    int sign = 1;
+    if (c >= 'A' && c <= 'Z')
+        return (c + 32);
+    return c;
+}
 
-    // Skip leading whitespace characters
-    while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-        str++;
-
-    // Handle the sign of the number
-    if (*str == '-')
+int ft_atoi_base(const char *str, int str_base)
+{
+    int i = 0;
+    int rs = 0;
+    int sg = 1;
+    int digit;
+// hena khase tchiki INT_MIN 
+    while (str[i] && str[i] <= 32)
+        i++;
+    if (str[i] == '-')
     {
-        sign = -1;
-        str++;
+        sg = -1;
+        i++;
     }
-    else if (*str == '+')
-        str++;
-
-    // Loop through each character in the input string
-    while (*str != '\0')
+    while (str[i])
     {
-        int i = 0;
-
-        // Find the matching character in the base string
-        while (base[i] != '\0' && base[i] != *str)
-            i++;
-
-        // If the end of the base string is reached without a match, return 0 (invalid character)
-        if (base[i] == '\0')
-            return 0;
-
-        // Update the result by multiplying it with the current value of i and adding i itself
-        n = n * i + i;
-
-        // Move to the next character in the input string
-        str++;
+        char c = to_lower(str[i]);
+        if (c >= '0' && c <= '9')
+            digit = c - 48;
+        else if (c >= 'a' && c <= 'f')
+            digit = c - 'a' + 10;
+        else
+            break;
+        rs = rs * str_base + digit;
+        i++;
     }
-
-    // Multiply the result by the sign to account for the number's sign
-    return n * sign;
+    return (rs * sg);
 }
 
 int main()
