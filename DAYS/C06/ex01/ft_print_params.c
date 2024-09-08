@@ -1,27 +1,22 @@
-#include <unistd.h>
-
-void ft_putchar(char c)
+int	main(int ac, char **av)
 {
-    write(1, &c, 1);
+	int	i;
+	int	j;
+
+	if (ac > 1)
+	{
+		j = 1;
+		while (j < ac)
+		{
+			i = 0;
+			while (av[j][i] != '\0')
+			{
+				write (1, &av[j][i], 1);
+				i++;
+			}
+			write (1, "\n", 1);
+			j++;
+		}
+	}
+	return (0);
 }
-
-int main(int argc, char *argv[])
-{
-    int i, j;
-
-    j = 1;
-    while (j < argc)
-    {
-        i = 0;
-        while (argv[j][i] != '\0')
-        {
-            ft_putchar(argv[j][i]);
-            i++;
-        }
-        ft_putchar('\n');
-        j++;
-    }
-
-    return 0;
-}
-
