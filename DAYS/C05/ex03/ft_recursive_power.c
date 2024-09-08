@@ -5,27 +5,18 @@
    Note: Overflow is not handled, so the result may be undefined in such cases.
 */
 
-int ft_recursive_power(int nb, int power)
+int	ft_recursive_power(int nb, int power)
 {
-    if (power < 0) // Check if the power is negative
-        return 0;
-    else if (power == 0) // Base case: any number raised to the power of 0 is 1
-        return 1;
-    else
-        return nb * ft_recursive_power(nb, power - 1); // Recursive call
+	if (power == 0)
+		return (1);
+	if (power < 0)
+		return (0);
+	nb = nb * ft_recursive_power(nb, power - 1);
+	return (nb);
 }
-
+/*#include <stdio.h>
 int main()
 {
-    int number = 2; // Example number
-    int exponent = 5; // Example exponent
-
-    // Calculate the power using the ft_recursive_power function
-    int result = ft_recursive_power(number, exponent);
-
-    // Print the result
-    printf("%d raised to the power of %d is: %d\n", number, exponent, result);
-
-    return 0;
-}
+	printf("is: %d\n", ft_recursive_power(9, 3));
+}*/
 
