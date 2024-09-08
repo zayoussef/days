@@ -1,45 +1,35 @@
 #include <stdlib.h>
-#include <stdio.h>
 
-int *ft_range(int min, int max) {
-    if (min >= max) // Check for invalid input
-        return NULL;
+int	*ft_range(int min, int max)
+{
+	int	i;
+	int	*tab;
 
-    int size = max - min;
-    int *arr = (int *)malloc(size * sizeof(int));
-
-    if (arr == NULL) // Handle memory allocation failure
-        return NULL;
-
-    int i = 0;
-    int value = min;
-    while (value < max) {
-        arr[i] = value;
-        i++;
-        value++;
-    }
-
-    return arr;
+	if (min >= max)
+	{
+		tab = NULL;
+		return (tab);
+	}
+	tab = (int *) malloc(sizeof (int) * (max - min));
+	if (!tab)
+		return (0);
+	i = 0;
+	while (max > min)
+	{
+		tab[i] = min;
+		i++;
+		min++;
+	}
+	return (tab);
 }
-
-int main() {
-    int min = 5;
-    int max = 10;
-
-    int *result = ft_range(min, max);
-
-    if (result != NULL) {
-        // Print the values in the range
-        int i = 0;
-        while (i < max - min) {
-            printf("%d ", result[i]);
-            i++;
-        }
-        printf("\n");
-
-        // Free the allocated memory
-        free(result);
-    }
-
-    return 0;
-}
+/*#include <stdio.h>
+int main()
+{
+	int *ptr = ft_range(-5, -1);
+	int i = 0;
+	while (i < 4)
+	{
+		printf("%d", ptr[i]);
+		i++;
+	}
+}*/
