@@ -5,33 +5,25 @@
    Note: Overflow is not handled, so the result may be undefined in such cases.
 */
 
-int ft_iterative_power(int nb, int power)
+int	ft_iterative_power(int nb, int power)
 {
-    if (power < 0) // Check if the power is negative
-        return 0;
+	int	rs;
 
-    int result = 1; // Variable to store the result
-
-    while (power > 0)
-    {
-        result *= nb;
-        power--;
-    }
-
-    return result;
+	if (power == 0)
+		return (1);
+	if (power < 0)
+		return (0);
+	rs = nb;
+	while (power > 1)
+	{
+		rs = rs * nb;
+		power--;
+	}
+	return (rs);
 }
-
+/*#include <stdio.h>
 int main()
 {
-    int number = 2; // Example number
-    int exponent = 5; // Example exponent
-
-    // Calculate the power using the ft_iterative_power function
-    int result = ft_iterative_power(number, exponent);
-
-    // Print the result
-    printf("%d raised to the power of %d is: %d\n", number, exponent, result);
-
-    return 0;
-}
+	printf("is: %d\n", ft_iterative_power(5, 3));
+}*/
 
