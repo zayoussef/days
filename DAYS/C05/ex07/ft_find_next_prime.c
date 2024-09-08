@@ -2,46 +2,41 @@
    It returns the next prime number.
 */
 
-int ft_is_prime(int nb)
+int	ft_is_prime(int nb)
 {
-    if (nb <= 1) // Check if the number is less than or equal to 1
-        return 0;
+	int	i;
 
-    int divisor = 2; // Start with divisor 2
-
-    while (divisor * divisor <= nb)
-    {
-        if (nb % divisor == 0)
-            return 0; // Number is divisible, not prime
-        divisor++;
-    }
-
-    return 1; // Number is prime
+	i = 2;
+	if (nb >= 2)
+	{
+		while (i <= nb / i)
+		{
+			if (nb % i == 0)
+				return (0);
+			i++;
+		}
+		return (1);
+	}
+	return (0);
 }
 
-int ft_find_next_prime(int nb)
+int	ft_find_next_prime(int nb)
 {
-    if (nb < 2) // Check if the number is less than 2
-        return 2; // The next prime number after 1 is 2
+	int	j;
 
-    while (1)
-    {
-        if (ft_is_prime(nb)) // Check if the number is prime
-            return nb;
-        nb++;
-    }
+	j = nb;
+	if (nb <= 2)
+		return (2);
+	while (j)
+	{
+		if (ft_is_prime(j) == 1)
+			return (j);
+		j++;
+	}
+	return (0);
 }
-
+/*#include <stdio.h>
 int main()
 {
-    int number = 20; // Example number
-
-    // Find the next prime number using ft_find_next_prime function
-    int result = ft_find_next_prime(number);
-
-    // Print the result
-    printf("The next prime number after %d is: %d\n", number, result);
-
-    return 0;
-}
-
+	printf("is: %d\n", ft_find_next_prime(27));
+}*/
